@@ -15,16 +15,20 @@
 }
 
 #panels {
-  @include row();
-  -webkit-column-count: 4; /* Chrome, Safari, Opera */
-  -moz-column-count: 2; /* Firefox */
-  column-count: 2;
-
-  height: 90vh;
+  .row {
+    @include row();
+    margin-bottom: 20px;
+  }
 }
 
-#loans, #balance, #amount_lent, #next_up {
+#loans {
   @extend %panel;
   @include span-columns(12);
+}
+
+
+#balance, #amount_lent, #next_up {
+  @extend %panel;
+  @include span-columns(4);
 }
 

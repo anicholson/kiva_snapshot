@@ -15,23 +15,25 @@ html
       h1 CCH Microfinance Team Dashboard
 
       #panels
-        #loans ng-controller='PublicLoansController'
-          h1 Loans Available
-          ul
-            li ng-repeat="loan in loans"
-              p ng-bind="loan.name"
-              p ng-bind="loan.activity"
-              p ng-bind="loan.use"
-
-        #balance ng-controller="AvailableBalanceController"
-          h1 Available Balance
-          p ng-bind="balance | currency"
+        .row
+          #balance ng-controller="AvailableBalanceController"
+            h1 Available Balance
+            p ng-bind="balance | currency"
 
 
-        #amount_lent ng-controller='AmountLentController'
-          h1 Amount Lent
-          p ng-bind='total_lent | currency'
+          #amount_lent ng-controller='AmountLentController'
+            h1 Amount Lent
+            p ng-bind='total_lent | currency'
 
-        #next_up ng-controller='NextLoanerController'
-          h1 Next Loaner
-          h2 ng-bind='loaner.name'
+          #next_up ng-controller='NextLoanerController'
+            h1 Next Loaner
+            h2 ng-bind='loaner.name'
+
+        .row
+          #loans ng-controller='PublicLoansController'
+            h1 Loans Available
+            ul
+              li ng-repeat="loan in loans"
+                p ng-bind="loan.name"
+                p ng-bind="loan.activity"
+                p ng-bind="loan.use"
