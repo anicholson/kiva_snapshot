@@ -1,0 +1,30 @@
+%panel {
+  background-color: $green-mist;
+  border: 2px solid darkgreen;
+  border-radius: 3px;
+
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+
+  padding: 15px 15px;
+
+  h1 {
+    font-size: 16px;
+  }
+}
+
+#panels {
+  @include row();
+  -webkit-column-count: 4; /* Chrome, Safari, Opera */
+  -moz-column-count: 2; /* Firefox */
+  column-count: 2;
+
+  height: 90vh;
+}
+
+#loans, #balance, #amount_lent, #next_up {
+  @extend %panel;
+  @include span-columns(12);
+}
+

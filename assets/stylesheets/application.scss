@@ -1,0 +1,23 @@
+@import 'bourbon/bourbon';
+@import 'neat/neat';
+@import 'fonts';
+@import 'colours';
+
+@import 'panel';
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  @include background(linear-gradient(to bottom, $background-light, $background-dark));
+  background-repeat: no-repeat;
+
+  font-family: 'Dosis', sans-serif;
+}
+
+.centred-content {
+  @include outer-container(960px);
+}
