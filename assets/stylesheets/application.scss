@@ -12,8 +12,7 @@ html {
 body {
   height: 100%;
   margin: 0;
-  @include background(linear-gradient(to bottom, $background-light, $background-dark));
-  background-repeat: no-repeat;
+  @include radial-gradient($background-light, $background-dark, $fallback: $background-dark);
 
   font-family: 'Dosis', sans-serif;
 }

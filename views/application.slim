@@ -5,7 +5,10 @@ html
     == stylesheet_tag 'normalize'
     == stylesheet_tag 'application'
 
-    == javascript_tag 'angular.min.js'
+    == javascript_tag 'jquery.min'
+    == javascript_tag 'highcharts'
+    == javascript_tag 'angular.min'
+    == javascript_tag 'highcharts-ng'
     == javascript_tag 'application'
 
   body ng-app='kivaSnapshot'
@@ -37,3 +40,6 @@ html
                 p ng-bind="loan.name"
                 p ng-bind="loan.activity"
                 p ng-bind="loan.use"
+        .row
+          #money_available ng-controller='MoneyAvailableController'
+            highchart id="money_available_chart" config="money_available_config"

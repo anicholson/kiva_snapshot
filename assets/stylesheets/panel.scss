@@ -21,7 +21,7 @@
   }
 }
 
-#loans {
+#loans, #money_available {
   @extend %panel;
   @include span-columns(12);
 }
