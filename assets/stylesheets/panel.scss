@@ -32,3 +32,22 @@
   @include span-columns(4);
 }
 
+#loans {
+  ul {
+    list-style-type: none;
+    display: inline-block;
+    li.loan {
+      display: inline;
+    };
+  };
+}
+
+#next_up {
+  .me:before {
+    color: $kiva_green;
+    content: '(me)';
+    font-size: 11px;
+    font-variant: small-caps;
+    text-decoration: dotted;
+  }
+}
