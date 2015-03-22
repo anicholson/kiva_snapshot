@@ -13,6 +13,9 @@ gem 'slim'
 
 gem 'sass'
 
+gem 'simple_oauth'
+gem 'oauth'
 gem 'omniauth'
 gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
+gem 'pry'
