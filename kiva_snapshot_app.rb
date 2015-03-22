@@ -20,6 +20,9 @@ class KivaSnapshotApp < Sinatra::Base
 
   register Sinatra::AssetPipeline
 
+  get '/login' do
+    slim :login
+  end
 
   get '/' do
     slim :application
