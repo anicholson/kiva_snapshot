@@ -1,3 +1,5 @@
+require 'sinatra'
+require 'sinatra/reloader'
 require 'sinatra/asset_pipeline'
 require 'slim'
 
