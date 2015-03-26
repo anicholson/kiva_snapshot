@@ -9,13 +9,21 @@ gem 'puma', '2.11.1'
 gem 'sinatra'
 gem 'sinatra-asset-pipeline'
 gem 'sinatra-contrib'
-gem 'slim'
 
+gem 'slim'
 gem 'sass'
 
+gem 'sequel'
+gem 'jdbc-postgresql'
+
+gem 'faraday'
+gem 'faraday_middleware'
 gem 'simple_oauth'
 gem 'oauth'
 gem 'omniauth'
 gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
 gem 'pry'
+
+
+gem 'rspec', '~> 3.0'
