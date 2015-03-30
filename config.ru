@@ -1,9 +1,9 @@
 require 'bundler'
 
+require 'rack'
 require 'sinatra'
 require 'sinatra/reloader'
 
-require 'sass'
 
 require_relative 'kiva_snapshot_app'
 
