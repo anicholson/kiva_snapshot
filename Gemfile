@@ -32,6 +32,7 @@ gem 'sass'
 gem 'sinatra-activerecord'
 gem 'activerecord', '~> 4.2'
 gem 'activerecord-jdbc-adapter'
+gem 'activerecord-jdbcpostgresql-adapter'
 gem 'jdbc-postgresql'
 
 # External Services
