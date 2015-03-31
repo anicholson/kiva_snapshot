@@ -11,7 +11,7 @@ describe StorageClient do
       it 'creates a LoanBalance object' do
         expect(LoanBalance).to receive(:create).with(balance_at: Date.today, amount: BigDecimal.new('100.00'))
 
-        subject.store(:user_balance, '100.00')
+        subject.store(:user_balance, date: Date.today, value: '100.00')
       end
     end
 

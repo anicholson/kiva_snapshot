@@ -10,7 +10,7 @@ class StorageClient
 
   private
 
-  def user_balance(amount)
-    LoanBalance.create(balance_at: Date.today, amount: BigDecimal.new(amount))
+  def user_balance(attributes)
+    LoanBalance.create(balance_at: attributes[:date], amount: BigDecimal.new(attributes[:value]))
   end
 end

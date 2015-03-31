@@ -5,6 +5,7 @@ require 'sinatra/activerecord'
 require 'activerecord-jdbc-adapter'
 require 'slim'
 require 'dotenv'
+require 'jdbc-postgresql'
 
 require 'oauth2'
 
