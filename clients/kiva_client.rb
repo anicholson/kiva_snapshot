@@ -14,8 +14,6 @@ class KivaClient
 
   def loans
     parsed_response = http.get('/v1/my/loans.json').body
-
-
   end
 
   private

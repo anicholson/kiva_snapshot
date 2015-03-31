@@ -22,7 +22,7 @@ describe FetchesKivaBalance do
 
   it 'logs any errors to STDOUT' do
     allow(kiva_client).to receive(:user_balance).and_raise('BURNINATE')
-    expect(STDOUT).to receive(:puts).with('BURNINATE')
+    expect(STDOUT).to receive(:<<).at_least(:once)
 
     subject.fetch
   end

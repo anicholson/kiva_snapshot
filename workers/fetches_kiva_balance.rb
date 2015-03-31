@@ -1,9 +1,10 @@
 # encoding: utf-8
 
 class FetchesKivaBalance
-  def initialize(kiva_client, storage_client)
+  def initialize(kiva_client, storage_client, logger = STDOUT)
     @kiva_client    = kiva_client
     @storage_client = storage_client
+    @logger         = logger
   end
 
   def fetch
@@ -11,10 +12,11 @@ class FetchesKivaBalance
 
     storage_client.store(:user_balance, date: Date.today, value: balance)
   rescue => e
-    STDOUT.puts e.message
+    logger << e.message
+    logger << e.backtrace
   end
 
   private
 
-  attr_reader :kiva_client, :storage_client
+  attr_reader :kiva_client, :storage_client, :logger
 end
