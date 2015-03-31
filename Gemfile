@@ -13,6 +13,7 @@ group :development, :test do
   gem 'pry'
   gem 'rspec', '~> 3.0'
 
+  gem 'database_cleaner'
 end
 
 # Server
