@@ -5,9 +5,9 @@ ruby '1.9.3', engine: 'jruby', engine_version: '1.7.19'
 
 # Platform
 gem 'rake'
+gem 'dotenv'
 
 group :development, :test do
-  gem 'dotenv'
 
   # Testing and debugging
   gem 'pry'
