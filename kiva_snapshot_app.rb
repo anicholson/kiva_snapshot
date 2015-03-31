@@ -4,7 +4,6 @@ require 'sinatra/asset_pipeline'
 require 'sinatra/activerecord'
 require 'activerecord-jdbc-adapter'
 require 'slim'
-require 'dotenv'
 require 'jdbc-postgresql'
 
 require 'oauth2'
@@ -14,6 +13,7 @@ class KivaSnapshotApp < Sinatra::Base
   register Sinatra::ActiveRecordExtension
 
   configure :development do
+    require 'dotenv'
     register Sinatra::Reloader
 
     Dotenv.load
