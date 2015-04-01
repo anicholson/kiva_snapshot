@@ -7,6 +7,7 @@ html
     == javascript_tag 'jquery.min'
     == javascript_tag 'highcharts'
     == javascript_tag 'angular.min'
+    == javascript_tag 'angular-resource.min'
     == javascript_tag 'highcharts-ng'
     == javascript_tag 'application'
 
@@ -21,6 +22,9 @@ html
           #balance ng-controller="AvailableBalanceController"
             h1 Available Balance
             p ng-bind="balance | currency"
+            p
+              | as at&nbsp;
+              span.updated-at ng-bind="updatedAt"
 
 
           #amount_lent ng-controller='AmountLentController'

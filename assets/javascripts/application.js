@@ -1,4 +1,9 @@
-var kivaSnapshot = angular.module('kivaSnapshot', ['highcharts-ng']);
+var kivaSnapshot = angular.module('kivaSnapshot', ['highcharts-ng', 'ngResource']);
+
+kivaSnapshot.factory("UserBalance", function($resource) {
+  return $resource("/api/user_balance.json");
+});
+
 
 kivaSnapshot.controller('PublicLoansController', function($scope) {
   $scope.loans = [
@@ -108,8 +113,11 @@ kivaSnapshot.controller('NextLoanerController', function($scope) {
 });
 
 
-kivaSnapshot.controller('AvailableBalanceController', function($scope) {
-  $scope.balance = 55;
+kivaSnapshot.controller('AvailableBalanceController', function($scope, $http) {
+  $http.get('/api/user_balance.json').success( function(data, status, headers, config) {
+    $scope.updatedAt = data.updatedAt;
+    $scope.balance   = data.amount;
+  });
 });
 
 kivaSnapshot.controller('AmountLentController', function($scope) {

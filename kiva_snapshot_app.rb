@@ -1,5 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sinatra/namespace'
+require 'sinatra/json'
 require 'sinatra/asset_pipeline'
 require 'sinatra/activerecord'
 require 'activerecord-jdbc-adapter'
@@ -11,6 +13,7 @@ require 'oauth2'
 
 class KivaSnapshotApp < Sinatra::Base
   register Sinatra::ActiveRecordExtension
+  register Sinatra::Namespace
 
   configure :development do
     require 'dotenv'
@@ -28,6 +31,18 @@ class KivaSnapshotApp < Sinatra::Base
   end
 
   register Sinatra::AssetPipeline
+
+  namespace '/api' do
+    get '/user_balance.json' do
+      balance = LoanBalance.order('balance_at DESC').first || OpenStruct.new(balance_at: 'N/A', amount: 0.0)
+
+      json({
+             updatedAt: balance.balance_at,
+             amount: balance.amount.to_f
+           })
+    end
+  end
+
 
   get '/login' do
     slim :login
