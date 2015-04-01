@@ -21,9 +21,9 @@ gem 'rack'
 gem 'puma', '2.11.1'
 
 # Web server
-gem 'sinatra'
+gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-asset-pipeline'
-gem 'sinatra-contrib'
+gem 'sinatra-contrib', require: false
 
 # Assets
 gem 'slim'
