@@ -37,7 +37,7 @@ class KivaSnapshotApp < Sinatra::Base
 
       json({
              updatedAt: balance.balance_at,
-             amount: balance.amount.to_f
+             amount: (balance.amount / 100.0).to_f
            })
     end
   end
