@@ -33,7 +33,7 @@ class KivaSnapshotApp < Sinatra::Base
 
   namespace '/api' do
     get '/user_balance.json' do
-      balance = LoanBalance.order('balance_at DESC').first || OpenStruct.new(balance_at: 'N/A', amount: 0.0)
+      balance = LoanBalance.latest
 
       json({
              updatedAt: balance.balance_at,
