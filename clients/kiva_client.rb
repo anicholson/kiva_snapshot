@@ -38,10 +38,10 @@ class KivaClient
 
   def kiva_oauth_credentials
     {
-      consumer_key: ENV['CONSUMER_ID'],
+      consumer_key:    ENV['CONSUMER_ID'],
       consumer_secret: ENV['CONSUMER_SECRET'],
-      token: ENV['ACCESS_TOKEN'],
-      token_secret: ENV['ACCESS_SECRET']
+      token:           ENV['ACCESS_TOKEN'],
+      token_secret:    ENV['ACCESS_SECRET']
     }
   end
 end
