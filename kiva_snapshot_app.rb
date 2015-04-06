@@ -40,6 +40,17 @@ class KivaSnapshotApp < Sinatra::Base
              amount: (balance.amount / 100.0).to_f
            })
     end
+
+    get '/stats.json' do
+      stats = DailyStats.latest
+      json({
+             loanCount: stats.loan_count,
+             activeLoans: stats.active_loan_count,
+             amountLoaned: stats.amount_loaned,
+             amountRepaid: stats.amount_repaid,
+             updatedAt: stats.created_at
+           })
+    end
   end
 
 

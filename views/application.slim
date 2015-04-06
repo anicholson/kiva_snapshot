@@ -29,7 +29,11 @@ html
 
           #amount_lent ng-controller='AmountLentController'
             h1 Amount Lent
-            p ng-bind='total_lent | currency'
+            p ng-bind='amountLoaned | currency'
+
+            p
+              | as at&nbsp;
+              span.updated-at ng-bind="updatedAt"
 
           #next_up ng-controller='NextLoanerController'
             h1 Next Loaner
