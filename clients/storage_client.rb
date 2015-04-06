@@ -13,4 +13,13 @@ class StorageClient
   def user_balance(attributes)
     LoanBalance.create(balance_at: attributes[:date], amount: BigDecimal.new(attributes[:value]))
   end
+
+  def stats(attributes)
+    DailyStats.create(
+      loan_count: attributes['number_of_loans'],
+      active_loan_count: attributes['num_paying_back'],
+      amount_loaned: attributes['amount_of_loans'],
+      amount_repaid: attributes['amount_repaid']
+    )
+  end
 end

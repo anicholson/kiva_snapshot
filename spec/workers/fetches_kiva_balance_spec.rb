@@ -26,4 +26,5 @@ describe FetchesKivaBalance do
 
     subject.fetch
   end
+
 end

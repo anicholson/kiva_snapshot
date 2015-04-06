@@ -8,10 +8,20 @@ describe StorageClient do
         subject.store(:user_balance, :argument)
       end
 
-      it 'creates a LoanBalance object' do
-        expect(LoanBalance).to receive(:create).with(balance_at: Date.today, amount: BigDecimal.new('100.00'))
+      describe 'known slots' do
+        it ':user_balance creates a LoanBalance object' do
+          expect { subject.store(:user_balance, date: Date.today, value: '100.00') }.to change { LoanBalance.count }.by 1
+        end
 
-        subject.store(:user_balance, date: Date.today, value: '100.00')
+        it ':stats creates a DailyStats object' do
+          expect do
+            subject.store(:stats,
+                          'num_paying_back' => 1,
+                          'number_of_loans' => 3,
+                          'amount_of_loans' => BigDecimal.new('123.00'),
+                          'amount_repaid'   => BigDecimal.new('65.43'))
+          end.to change { DailyStats.count }.by 1
+        end
       end
     end
 
