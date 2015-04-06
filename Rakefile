@@ -24,5 +24,15 @@ namespace :scrape do
 
     FetchesKivaBalance.new(KivaClient.new, StorageClient.new).fetch
   end
+
+  desc 'Fetch and store DailyStats from Kiva'
+  task :daily_stats => :app do
+    puts "Fetching Kiva Stats for #{Date.today}"
+
+    FetchesDailyStats.new(KivaClient.new, StorageClient.new).fetch
+  end
+
+  desc 'Fetch all items from the Kiva API'
+  task :all => [:user_balance, :daily_stats]
 end
 
