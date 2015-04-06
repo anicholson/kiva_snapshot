@@ -19,7 +19,7 @@ describe StorageClient do
                           'num_paying_back' => 1,
                           'number_of_loans' => 3,
                           'amount_of_loans' => BigDecimal.new('123.00'),
-                          'amount_repaid'  => BigDecimal.new('65.43'))
+                          'amount_repaid'   => BigDecimal.new('65.43'))
           end.to change { DailyStats.count }.by 1
         end
       end
