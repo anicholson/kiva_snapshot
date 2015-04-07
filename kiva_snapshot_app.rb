@@ -52,6 +52,26 @@ class KivaSnapshotApp < Sinatra::Base
              updatedAt: stats.created_at
            })
     end
+
+    get '/available_vs_loaned.json' do
+      available = LoanBalance.last(90).map do |balance|
+        {
+          x: balance.balance_at.to_datetime.to_i * 1000,
+          y: balance.amount.to_f
+        }
+      end
+
+      loaned = DailyStats.last(90).map do |stats|
+        {
+          x: stats.created_at.to_i * 1000,
+          y: stats.amount_loaned.to_f
+        }
+      end
+      json({
+             available: available,
+             loaned: loaned
+           })
+    end
   end
 
 
