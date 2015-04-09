@@ -5,11 +5,8 @@ require 'jdbc-postgresql'
 
 ActiveRecord::Migration.maintain_test_schema!
 
-%w(clients workers models).each do |dir|
-  Dir.glob(Pathname.new(__FILE__).join('..', '..', dir, '**', '*.rb')).each do |file|
-    require file
-  end
-end
+# Include the app code
+require_relative '../boot'
 
 require 'database_cleaner'
 
