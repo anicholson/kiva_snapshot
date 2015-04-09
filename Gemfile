@@ -14,6 +14,8 @@ group :development, :test do
   gem 'rspec', '~> 3.0'
 
   gem 'database_cleaner'
+  gem 'capybara'
+  gem 'poltergeist'
 end
 
 # Server
