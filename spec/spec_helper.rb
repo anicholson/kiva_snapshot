@@ -1,5 +1,9 @@
+ENV['RACK_ENV'] ||= 'test'
+
 require 'sinatra/activerecord'
 require 'jdbc-postgresql'
+
+ActiveRecord::Migration.maintain_test_schema!
 
 %w(clients workers models).each do |dir|
   Dir.glob(Pathname.new(__FILE__).join('..', '..', dir, '**', '*.rb')).each do |file|
