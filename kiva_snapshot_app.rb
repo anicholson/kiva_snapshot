@@ -33,6 +33,7 @@ class KivaSnapshotApp < Sinatra::Base
     mime_type :woff2, 'application/font-woff2'
   end
 
+  use Rack::Session::Cookie, secret: ENV['COOKIE_SECRET']
   register Sinatra::AssetPipeline
 
   register Routing::API
