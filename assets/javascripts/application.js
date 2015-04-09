@@ -5,6 +5,7 @@
 //= require 'angular.min'
 //= require 'angular-resource.min'
 //= require 'highcharts-ng'
+//= require 'fb'
 
 // Application code
 

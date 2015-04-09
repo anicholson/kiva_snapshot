@@ -6,7 +6,6 @@ html
     == javascript_tag 'application'
 
   body ng-app='kivaSnapshot'
-    == javascript_tag 'fb'
 
     .centred-content
       h1 CCH Microfinance Team Dashboard
@@ -18,7 +17,7 @@ html
             p ng-bind="balance | currency"
             p
               | as at&nbsp;
-              span.updated-at ng-bind="updatedAt"
+              span.updated-at ng-bind="updatedAt | date : 'longDate'"
 
 
           #amount_lent ng-controller='AmountLentController'
@@ -27,7 +26,7 @@ html
 
             p
               | as at&nbsp;
-              span.updated-at ng-bind="updatedAt"
+              span.updated-at ng-bind="updatedAt | date : 'longDate'"
 
           #next_up ng-controller='NextLoanerController'
             h1 Next Loaner
