@@ -1,3 +1,13 @@
+// 3rd-party libraries
+
+//= require 'jquery.min'
+//= require 'highcharts'
+//= require 'angular.min'
+//= require 'angular-resource.min'
+//= require 'highcharts-ng'
+
+// Application code
+
 //= require 'client'
 //= require './client/loans_controller'
 //= require './client/next_loaner'
