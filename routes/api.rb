@@ -2,6 +2,10 @@ module Routing
   module API
     def self.registered(app)
       app.namespace '/api' do
+        before do
+          halt(404) unless session[:logged_in]
+        end
+
         get '/user_balance.json' do
           balance = LoanBalance.latest
 

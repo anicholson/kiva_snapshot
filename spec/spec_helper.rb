@@ -1,5 +1,6 @@
 # Always use test environment
-ENV['RACK_ENV'] ||= 'test'
+ENV['RACK_ENV']      ||= 'test'
+ENV['COOKIE_SECRET'] = 'cookie_secret'
 
 # Always see if the db's migrated before we start
 require 'sinatra/activerecord'
@@ -8,6 +9,7 @@ require 'jdbc-postgresql'
 ActiveRecord::Migration.maintain_test_schema!
 
 # Include the app code
+require 'rack/test'
 require_relative '../boot'
 
 # Keep the db clean
@@ -21,6 +23,8 @@ Capybara.app = KivaSnapshotApp
 Capybara.javascript_driver = :poltergeist
 
 RSpec.configure do |config|
+
+  config.include Rack::Test::Methods
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
