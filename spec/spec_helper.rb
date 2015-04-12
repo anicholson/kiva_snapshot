@@ -22,6 +22,13 @@ require 'capybara/poltergeist'
 Capybara.app = KivaSnapshotApp
 Capybara.javascript_driver = :poltergeist
 
+# RSpec helpers and config
+
+support_files = Pathname.new(__FILE__).join('..', 'support', '**', '*.rb')
+Dir.glob(support_files).each do |support_file|
+  require support_file
+end
+
 RSpec.configure do |config|
 
   config.include Rack::Test::Methods

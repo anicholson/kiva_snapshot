@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe 'API access', type: :feature do
-  def app
-    KivaSnapshotApp
-  end
-
   it 'denies access without a session' do
     get '/api/stats.json', {}, 'rack.session' => nil
 
