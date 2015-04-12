@@ -32,6 +32,12 @@ class KivaSnapshotApp < Sinatra::Base
 
   use Rack::Session::Cookie, secret: ENV['COOKIE_SECRET']
 
+  helpers do
+    def logged_in?
+      session[:logged_in]
+    end
+  end
+
   register Sinatra::ActiveRecordExtension
   register Sinatra::Namespace
 
