@@ -8,7 +8,7 @@ describe 'API access', type: :feature do
   end
 
   it 'allows access when a session exists' do
-    get '/api/stats.json', {}, 'rack.session' => { logged_in: 'totes_logged_in' }
+    get '/api/stats.json', {}, 'rack.session' => { logged_in: true }
 
     expect(last_response.status).to eq(200)
   end
