@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'API access', type: :feature do
+describe 'API access', rack_test: true do
   it 'denies access without a session' do
     get '/api/stats.json', {}, 'rack.session' => nil
 

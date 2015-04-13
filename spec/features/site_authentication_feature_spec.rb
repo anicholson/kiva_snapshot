@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'site authentication', type: :feature do
+describe 'site authentication', rack_test: true do
   let(:logged_in) { { 'rack.session' => { logged_in: true } } }
   let(:not_logged_in) { { 'rack.session' => nil } }
 
