@@ -17,6 +17,7 @@ require 'database_cleaner'
 
 # Capybara configuration
 require 'capybara'
+require 'capybara/rspec'
 require 'capybara/poltergeist'
 
 Capybara.app = KivaSnapshotApp
