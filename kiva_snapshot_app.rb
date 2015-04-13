@@ -32,7 +32,7 @@ class KivaSnapshotApp < Sinatra::Base
 
   set :login_password,    ENV['LOGIN_PASSWORD']
 
-  use Rack::Session::Cookie, secret: ENV['COOKIE_SECRET']
+  use Rack::Session::Cookie, secret: ENV['COOKIE_SECRET'], expire_after: 3600
 
   helpers do
     def logged_in?

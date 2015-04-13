@@ -23,6 +23,10 @@ class KivaClient
     end
   end
 
+  def raw(q)
+    http.get(q).body
+  end
+
   private
 
   attr_reader :http

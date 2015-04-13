@@ -8,6 +8,8 @@
 
 @import 'login';
 
+@import 'querier';
+
 html {
   height: 100%;
 }
@@ -22,4 +24,8 @@ body {
 
 .centred-content {
   @include outer-container(960px);
+}
+
+.full-width {
+  @include span-columns(12);
 }

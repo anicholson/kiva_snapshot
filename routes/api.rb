@@ -6,6 +6,19 @@ module Routing
           halt(404) unless logged_in?
         end
 
+        get '/query' do
+          slim :query
+        end
+
+        post '/query' do
+          params = JSON.parse(request.body.read)
+
+          api_query = params['query']
+
+          client = KivaClient.new
+          json(client.raw(api_query))
+        end
+
         get '/user_balance.json' do
           balance = LoanBalance.latest
 

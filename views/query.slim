@@ -1,0 +1,23 @@
+doctype html
+
+html
+  head
+    title = 'CCH Microfinance Kiva API Query'
+
+    == stylesheet_tag 'application'
+    == javascript_tag 'application'
+
+  body ng-app='querier'
+    #api_query.centred-content ng-controller='KivaAPIController as qctl'
+      h1 CCH Microfinance Kiva API Query&hellip;er
+
+      #api_input
+        .full-width
+          label for='q'
+            | API Endpoint
+            input type='text' name='q' ng-model='query'
+            button ng-click='doQuery()' Go
+
+      #results
+        .full-width
+          pre#result-content ng-bind='results'

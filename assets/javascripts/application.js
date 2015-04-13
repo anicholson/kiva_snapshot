@@ -14,3 +14,5 @@
 //= require './client/available_balance_controller'
 //= require './client/amount_lent_controller'
 //= require './client/money_available_controller'
+
+//= require './client/querier'

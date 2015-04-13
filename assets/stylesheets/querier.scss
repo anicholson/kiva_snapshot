@@ -1,0 +1,17 @@
+#api_query {
+  #api_input {
+    @include row();
+
+    input {
+      width: 500px;
+    }
+
+    margin-bottom: 20px;
+  }
+
+  #results {
+    @extend %panel;
+
+    min-height: 500px;
+  }
+}
