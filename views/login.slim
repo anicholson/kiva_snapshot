@@ -19,7 +19,8 @@ html
 
           form#login-form action='/login' method='post'
             .password-field
-              label for='password' = "Password"
-              input type='password' name='password'
+              label for='password'
+                | Password
+                input type='password' name='password'
             .login-button
               input type='submit' value='Log in'
