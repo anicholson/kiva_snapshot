@@ -15,4 +15,27 @@
     margin-right: auto;
     width: 480px;
   }
+
+  #login-form {
+    @include row();
+
+    .password-field {
+      @include span-columns(9);
+
+      label {
+        margin-right: 20px;
+      }
+
+      input {
+        width: 60%;
+      }
+    }
+
+    .login-button {
+      @include span-columns(3);
+      input {
+        width: 100%;
+      }
+    }
+  }
 }

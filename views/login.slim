@@ -8,14 +8,18 @@ html
     == javascript_tag 'application'
 
   body
-    #fb-root
-
     #login
       .middle
         .inner
-          h1 Login using facebook
-          div.fb-login-button data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"
+          h1 Login to dashboard
           p
             | This app is restricted to members of the CCH Microfinance Group. If you're curious about what that is, ask&nbsp;
             a href='http://twitter.com/andrewdotnich'
               | this guy.
+
+          form#login-form action='/login' method='post'
+            .password-field
+              label for='password' = "Password"
+              input type='password' name='password'
+            .login-button
+              input type='submit' value='Log in'
