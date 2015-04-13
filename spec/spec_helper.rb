@@ -1,6 +1,9 @@
 # Always use test environment
 ENV['RACK_ENV']      ||= 'test'
-ENV['COOKIE_SECRET'] = 'cookie_secret'
+ENV['COOKIE_SECRET']   = 'cookie_secret'
+ENV['LOGIN_PASSWORD']  = 'password1'
+
+require 'pry'
 
 # Always see if the db's migrated before we start
 require 'sinatra/activerecord'

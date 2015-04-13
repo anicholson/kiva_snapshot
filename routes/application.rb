@@ -5,6 +5,15 @@ module Routing
         slim :login
       end
 
+      app.post '/login' do
+        if params['password'] == settings.login_password
+          session[:logged_in] = true
+          redirect to('/', 200)
+        else
+          slim :login
+        end
+      end
+
       app.get '/' do
         redirect to('/login', 307) unless logged_in?
         slim :application
