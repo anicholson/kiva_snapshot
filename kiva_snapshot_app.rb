@@ -30,9 +30,9 @@ class KivaSnapshotApp < Sinatra::Base
     mime_type :woff2, 'application/font-woff2'
   end
 
+  enable :sessions
+  set :session_secret,    ENV['COOKIE_SECRET']
   set :login_password,    ENV['LOGIN_PASSWORD']
-
-  use Rack::Session::Cookie, secret: ENV['COOKIE_SECRET'], expire_after: 3600
 
   helpers do
     def logged_in?

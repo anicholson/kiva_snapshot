@@ -1,6 +1,7 @@
 %panel {
+  @include clearfix();
   background-color: $green-mist;
-  border: 2px solid darkgreen;
+  border: 2px solid $border-green;
   border-radius: 3px;
 
   -webkit-column-break-inside: avoid;

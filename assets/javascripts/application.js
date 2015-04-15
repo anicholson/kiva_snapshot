@@ -2,9 +2,11 @@
 
 //= require 'jquery.min'
 //= require 'highcharts'
+//= require 'highlight.pack'
 //= require 'angular.min'
 //= require 'angular-resource.min'
 //= require 'highcharts-ng'
+//= require 'angular-highlightjs.min.js'
 
 // Application code
 
