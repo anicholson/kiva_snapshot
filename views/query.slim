@@ -8,6 +8,7 @@ html
     == javascript_tag 'application'
 
   body ng-app='querier'
+
     #api_query.centred-content ng-controller='KivaAPIController as qctl'
       h1 CCH Microfinance Kiva API Query&hellip;er
 
@@ -17,6 +18,10 @@ html
             | API Endpoint
             input type='text' name='q' ng-model='query'
             button ng-click='doQuery()' Go
+
+      #api_reference
+        a href='http://build.kiva.org/api' target='_blank'
+          | Kiva API reference
 
       #results
         .full-width

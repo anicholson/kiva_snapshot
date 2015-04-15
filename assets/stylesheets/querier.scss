@@ -9,6 +9,11 @@
     margin-bottom: 20px;
   }
 
+  #api_reference {
+    @include row();
+    margin-bottom: 10px;
+  }
+
   #results {
     @extend %panel;
 
