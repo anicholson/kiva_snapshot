@@ -3,7 +3,7 @@ module Routing
     def self.registered(app)
       app.namespace '/api' do
         before do
-          # halt(404) unless logged_in?
+          halt(404) unless logged_in?
         end
 
         get '/query' do
