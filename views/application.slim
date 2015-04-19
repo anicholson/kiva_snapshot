@@ -34,15 +34,14 @@ html
             h1 Next Loaner
             h2 ng-bind='loaner.name' ng-class='loaner.is_me'
 
-
-        .row
-          #loans ng-controller='PublicLoansController'
-            h1 Last 3 Loans
-            ul
-              li.loan ng-repeat="loan in loans"
-                p.loaner-name ng-bind="loan.name"
-                p.loaner-activity ng-bind="loan.activity"
-                p.loaner-use ng-bind="loan.use"
+        /.row
+        /  #loans ng-controller='PublicLoansController'
+        /    h1 Last 3 Loans
+        /    ul
+        /      li.loan ng-repeat="loan in loans"
+        /        p.loaner-name ng-bind="loan.name"
+        /        p.loaner-activity ng-bind="loan.activity"
+        /        p.loaner-use ng-bind="loan.use"
         .row
           #money_available ng-controller='MoneyAvailableController'
             highchart id="money_available_chart" config="money_available_config"
