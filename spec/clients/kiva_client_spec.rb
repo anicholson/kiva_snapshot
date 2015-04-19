@@ -27,7 +27,7 @@ describe KivaClient do
     end
 
     it 'QUERY: should return my balance, in cents' do
-      expect(subject.user_balance).to eq(817)
+      expect(subject.user_balance[:balance]).to eq(817)
     end
   end
 

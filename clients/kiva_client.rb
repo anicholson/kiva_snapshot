@@ -9,7 +9,10 @@ class KivaClient
 
   def user_balance
     parsed_response = http.get('/v1/my/balance.json').body
-    (BigDecimal.new(parsed_response['user_balance']['balance']) * 100).to_i
+    {
+      date: Date.today,
+      balance: (BigDecimal.new(parsed_response['user_balance']['balance']) * 100).to_i
+    }
   end
 
   def loans
