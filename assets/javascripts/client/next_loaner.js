@@ -1,14 +1,10 @@
 kivaSnapshot.controller('NextLoanerController', function($scope) {
   var loanerIsMe = function() {
-    if((Math.ceil(Math.random() * 100) % 2) == 0){
-      return 'me';
-    } else {
-      return '';
-    }
+    return false;
   };
 
   $scope.loaner = {
-    name: "James Griffiths",
+    name: "Will Hore-Lacy",
     is_me: loanerIsMe()
   };
 });
