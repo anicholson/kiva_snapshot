@@ -1,3 +1,4 @@
+#encoding: utf-8
 require 'spec_helper'
 require 'ostruct'
 
@@ -85,5 +86,134 @@ describe KivaClient do
       expect(result['number_of_loans']).to eq(15)
       expect(result['amount_of_loans']).to eq(BigDecimal.new('115000'))
     end
+  end
+
+  describe '#loans' do
+    let(:response_hash) do
+      JSON.parse <<-JSON
+{
+  "paging": {
+    "page": 1,
+    "total": 2,
+    "page_size": 20,
+    "pages": 1
+  },
+  "loans": [
+    {
+      "id": 857045,
+      "name": "Lim",
+      "description": {
+        "languages": [
+          "en"
+        ]
+      },
+      "status": "in_repayment",
+      "funded_amount": 1125,
+      "paid_amount": 0,
+      "image": {
+        "id": 1838204,
+        "template_id": 1
+      },
+      "activity": "Farming",
+      "sector": "Agriculture",
+      "use": "to buy a plot of farmland for growing rice",
+      "location": {
+        "country_code": "KH",
+        "country": "Cambodia",
+        "town": "Kampong Cham",
+        "geo": {
+          "level": "town",
+          "pairs": "12 105.5",
+          "type": "point"
+        }
+      },
+      "partner_id": 106,
+      "posted_date": "2015-03-22T18:20:02Z",
+      "planned_expiration_date": "2015-04-21T18:20:02Z",
+      "loan_amount": 1125,
+      "borrower_count": 1,
+      "lender_count": 34,
+      "bonus_credit_eligibility": false,
+      "tags": [
+        {
+          "name": "#WomanOwnedBiz"
+        },
+        {
+          "name": "#Vegan"
+        },
+        {
+          "name": "#Parent"
+        }
+      ]
+    },
+    {
+      "id": 829958,
+      "name": "Nhuận",
+      "description": {
+        "languages": [
+          "en"
+        ]
+      },
+      "status": "in_repayment",
+      "funded_amount": 725,
+      "paid_amount": 0,
+      "image": {
+        "id": 1797395,
+        "template_id": 1
+      },
+      "activity": "Personal Housing Expenses",
+      "sector": "Housing",
+      "themes": [
+        "Water and Sanitation"
+      ],
+      "use": "to purchase sand, cement, brick and equipment to build a toilet.",
+      "location": {
+        "country_code": "VN",
+        "country": "Vietnam",
+        "town": "Thanh Hoá",
+        "geo": {
+          "level": "country",
+          "pairs": "16.166667 107.833333",
+          "type": "point"
+        }
+      },
+      "partner_id": 121,
+      "posted_date": "2015-01-20T04:30:02Z",
+      "planned_expiration_date": "2015-02-19T04:30:02Z",
+      "loan_amount": 725,
+      "borrower_count": 1,
+      "lender_count": 23,
+      "bonus_credit_eligibility": true,
+      "tags": [
+        {
+          "name": "#Parent"
+        },
+        {
+          "name": "#HealthAndSanitation"
+        },
+        {
+          "name": "#RepeatBorrower"
+        }
+      ]
+    }
+  ]
+}
+      JSON
+    end
+
+    let(:loan_array) { OpenStruct.new(body: {'loans' => []})}
+    before { allow(test_http_client).to receive(:get).with('/v1/my/loans.json').and_return(test_response) }
+
+    it 'COMMAND: should call out to the Kiva API' do
+      expect(test_http_client).to receive(:get).with('/v1/my/loans.json')
+      expect(test_http_client).to receive(:get).with('/v1/loans/857045,829958.json').and_return(loan_array)
+      subject.loans
+    end
+
+    it 'QUERY: should return an array of loans' do
+      allow(test_http_client).to receive(:get).with('/v1/loans/857045,829958.json').and_return(loan_array)
+      expect(subject.loans).to be_an(Array)
+    end
+
   end
 end

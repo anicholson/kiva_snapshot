@@ -17,6 +17,11 @@ class KivaClient
 
   def loans
     parsed_response = http.get('/v1/my/loans.json').body
+
+    loan_ids = parsed_response['loans'].map {|loan| loan['id'] }.join(',')
+
+    my_loans = http.get("/v1/loans/#{loan_ids}.json").body['loans']
+
   end
 
   def stats
