@@ -22,4 +22,12 @@ class StorageClient
       amount_repaid: attributes['amount_repaid']
     )
   end
+
+  def loans(attributes)
+    return false unless attributes
+    Loan.destroy_all
+    attributes.each do |loan|
+      Loan.new_from_json(loan).save!
+    end
+  end
 end

@@ -9,11 +9,19 @@ class KivaClient
 
   def user_balance
     parsed_response = http.get('/v1/my/balance.json').body
-    (BigDecimal.new(parsed_response['user_balance']['balance']) * 100).to_i
+    {
+      date: Date.today,
+      balance: (BigDecimal.new(parsed_response['user_balance']['balance']) * 100).to_i
+    }
   end
 
   def loans
     parsed_response = http.get('/v1/my/loans.json').body
+
+    loan_ids = parsed_response['loans'].map {|loan| loan['id'] }.join(',')
+
+    my_loans = http.get("/v1/loans/#{loan_ids}.json").body['loans']
+
   end
 
   def stats

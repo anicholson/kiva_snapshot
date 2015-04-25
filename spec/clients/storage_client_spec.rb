@@ -1,3 +1,4 @@
+#encoding: utf-8
 require 'spec_helper'
 
 describe StorageClient do
@@ -21,6 +22,39 @@ describe StorageClient do
                           'amount_of_loans' => BigDecimal.new('123.00'),
                           'amount_repaid'   => BigDecimal.new('65.43'))
           end.to change { DailyStats.count }.by 1
+        end
+
+        describe ':loans' do
+          subject { StorageClient.new.store(:loans, loan_data) }
+          context 'passed loan data' do
+            let(:loan_data) { example_loans_data }
+            it 'deletes all existing loans' do
+              expect(Loan).to receive(:destroy_all)
+
+              subject
+            end
+
+            it 'creates new loans from the array of data' do
+              expect { subject }.to change { Loan.count }.by(2)
+            end
+          end
+
+          context 'passed incorrect data:' do
+            let(:loan_data) { @data }
+
+            [nil, '[]', ''].each do |missing|
+              @data = missing
+
+              it 'does not delete existing loans' do
+                expect(Loan).not_to receive(:destroy_all)
+                subject
+              end
+
+              it 'does not create any new loans' do
+                expect(Loan).not_to receive(:create)
+              end
+            end
+          end
         end
       end
     end
