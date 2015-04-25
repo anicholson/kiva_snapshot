@@ -5,4 +5,14 @@
   border-radius: 10px;
   background: $bg-color;
   color: $green-mist;
+
+  a {
+    color: $green-mist;
+    text-decoration: none;
+
+    &:hover {
+      color: $green-mist;
+      text-decoration: none;
+    }
+  }
 }
