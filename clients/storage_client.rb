@@ -27,10 +27,7 @@ class StorageClient
     return false unless attributes
     Loan.destroy_all
     attributes.each do |loan|
-      Loan.create(
-        loan_id: loan['id'].to_i,
-        data: loan
-      )
+      Loan.new_from_json(loan).save!
     end
   end
 end
