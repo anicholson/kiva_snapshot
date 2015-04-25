@@ -14,37 +14,15 @@ html
 
       #panels
         .row
-          #balance ng-controller="AvailableBalanceController"
-            h1 Available Balance
-            p ng-bind="balance | currency"
-            p
-              | as at&nbsp;
-              span.updated-at ng-bind="updatedAt | date : 'longDate'"
+          == slim :available_balance
+          == slim :amount_lent
+          == slim :next_up
 
-
-          #amount_lent ng-controller='AmountLentController'
-            h1 Amount Lent
-            p ng-bind='amountLoaned | currency'
-
-            p
-              | as at&nbsp;
-              span.updated-at ng-bind="updatedAt | date : 'longDate'"
-
-          #next_up ng-controller='NextLoanerController'
-            h1 Next Loaner
-            h2 ng-bind='loaner.name' ng-class='loaner.is_me'
-
-        /.row
-        /  #loans ng-controller='PublicLoansController'
-        /    h1 Last 3 Loans
-        /    ul
-        /      li.loan ng-repeat="loan in loans"
-        /        p.loaner-name ng-bind="loan.name"
-        /        p.loaner-activity ng-bind="loan.activity"
-        /        p.loaner-use ng-bind="loan.use"
         .row
-          #money_available ng-controller='MoneyAvailableController'
-            highchart id="money_available_chart" config="money_available_config"
+          == slim :money_available
+
+        .row
+          == slim :last_3_loans
 
       footer
         a href='/api/query'

@@ -1,0 +1,6 @@
+#balance ng-controller="AvailableBalanceController"
+  h1 Available Balance
+  p ng-bind="balance | currency"
+  p
+    | as at&nbsp;
+    span.updated-at ng-bind="updatedAt | date : 'longDate'"

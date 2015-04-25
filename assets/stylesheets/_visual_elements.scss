@@ -1,0 +1,8 @@
+@import 'panel';
+
+@mixin pill($bg-color) {
+  padding: 5px;
+  border-radius: 10px;
+  background: $bg-color;
+  color: $green-mist;
+}

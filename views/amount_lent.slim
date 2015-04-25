@@ -1,0 +1,7 @@
+#amount_lent ng-controller='AmountLentController'
+  h1 Amount Lent
+  p ng-bind='amountLoaned | currency'
+
+  p
+    | as at&nbsp;
+    span.updated-at ng-bind="updatedAt | date : 'longDate'"

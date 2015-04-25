@@ -1,0 +1,22 @@
+#loans section.loan {
+  h1.title {
+    font-size: 20px;
+  }
+
+    .status {
+      display: inline-block;
+      @include pill($kiva_green);
+    }
+
+
+  .info {
+    width: 60%;
+    .tags {
+      li {
+        @include pill($kiva_green);
+        display: inline;
+        margin-right: 5px;
+      }
+    }
+  }
+}

@@ -1,4 +1,6 @@
 class Loan < ActiveRecord::Base
+  default_scope { order("data->>'funded_date' DESC") }
+
   class << self
     def new_from_json(json_data)
       new.tap do |loan|

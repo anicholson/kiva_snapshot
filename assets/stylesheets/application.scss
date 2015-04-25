@@ -1,39 +1,16 @@
 @import 'normalize';
 @import 'bourbon/bourbon';
 @import 'neat/neat';
-
-
 @import 'fonts';
 @import 'colours';
+@import 'layout';
+
+@import 'visual_elements';
 
 @import 'highlight-theme';
 
-@import 'panel';
+@import 'loan';
 
 @import 'login';
 
 @import 'querier';
-
-html {
-  height: 100%;
-}
-
-body {
-  height: 100%;
-  margin: 0;
-  @include radial-gradient($background-light, $background-dark, $fallback: $background-dark);
-
-  font-family: 'Dosis', sans-serif;
-}
-
-.centred-content {
-  @include outer-container(960px);
-}
-
-.full-width {
-  @include span-columns(12);
-}
-
-.row {
-  @include row();
-}
