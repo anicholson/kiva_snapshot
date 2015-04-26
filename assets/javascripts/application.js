@@ -1,12 +1,12 @@
 // 3rd-party libraries
 
-//= require 'jquery.min'
+//= require 'jquery'
 //= require 'highcharts'
-//= require 'highlight.pack'
-//= require 'angular.min'
-//= require 'angular-resource.min'
+//= require 'highlightjs'
+//= require 'angular'
+//= require 'angular-resource'
 //= require 'highcharts-ng'
-//= require 'angular-highlightjs.min.js'
+//= require 'angular-highlightjs'
 
 // Application code
 
