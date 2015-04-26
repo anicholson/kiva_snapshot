@@ -30,6 +30,7 @@ gem 'sinatra-contrib', require: false
 # Assets
 gem 'slim'
 gem 'sass'
+gem 'bower'
 
 # Database
 gem 'sinatra-activerecord'
