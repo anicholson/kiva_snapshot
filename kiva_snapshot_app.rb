@@ -6,6 +6,7 @@ require 'sinatra/activerecord'
 require 'activerecord-jdbc-adapter'
 require 'slim'
 require 'jdbc-postgresql'
+require 'bower'
 
 require 'oauth2'
 
@@ -14,9 +15,11 @@ require_relative 'routes/application'
 
 
 class KivaSnapshotApp < Sinatra::Base
+  sprockets_environment = Sprockets::Environment.new(root)
+  sprockets_environment.append_path Bower.environment.directory
   set :root,              File.dirname(__FILE__)
   set :database_file,     'config/database.yml'
-  set :sprockets,         Sprockets::Environment.new(root)
+  set :sprockets,         sprockets_environment
   set :assets_precompile, %w(application.js application.css *.png *.jpg *.svg *.eot *.ttf *.woff *.woff2)
 
   configure :development do
