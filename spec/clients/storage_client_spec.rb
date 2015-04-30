@@ -11,7 +11,7 @@ describe StorageClient do
 
       describe 'known slots' do
         it ':user_balance creates a LoanBalance object' do
-          expect { subject.store(:user_balance, date: Date.today, value: '100.00') }.to change { LoanBalance.count }.by 1
+          expect { subject.store(:user_balance, date: Date.today, balance: '100.00') }.to change { LoanBalance.count }.by 1
         end
 
         it ':stats creates a DailyStats object' do
