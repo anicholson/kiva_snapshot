@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5) do
+ActiveRecord::Schema.define(version: 6) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 5) do
 #   undefined method `[]' for nil:NilClass
 
 # Could not dump table "loan_balances" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
+# Could not dump table "loan_users" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
 
 # Could not dump table "loans" because of following NoMethodError

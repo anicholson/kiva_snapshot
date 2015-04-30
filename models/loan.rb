@@ -1,4 +1,6 @@
 class Loan < ActiveRecord::Base
+  self.primary_key = 'loan_id'
+
   default_scope { order("data->>'funded_date' DESC") }
 
   class << self
