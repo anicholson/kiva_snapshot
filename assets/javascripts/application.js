@@ -12,7 +12,6 @@
 
 //= require 'client'
 //= require './client/loans_controller'
-//= require './client/next_loaner'
 //= require './client/available_balance_controller'
 //= require './client/amount_lent_controller'
 //= require './client/money_available_controller'

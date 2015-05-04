@@ -16,7 +16,7 @@ html
         .row
           == slim :available_balance
           == slim :amount_lent
-          == slim :next_up
+          == slim :next_up, locals: { user: User.next_loaner }
 
         .row
           == slim :money_available
