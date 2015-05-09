@@ -1,4 +1,6 @@
 class Loan < ActiveRecord::Base
+  has_one :loan_user
+  has_one :user, through: :loan_user
   self.primary_key = 'loan_id'
 
   default_scope { order("data->>'funded_date' DESC") }
