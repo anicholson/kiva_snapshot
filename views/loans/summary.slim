@@ -1,0 +1,14 @@
+section.loan data-id=loan.loan_id
+  h1 = loan.name
+  .status = loan.status.to_s.humanize.upcase
+  .info
+    p = loan.description
+    p
+      | Loaned
+      span.loan_amount = sprintf(" $%.2f", loan.amount_we_loaned)
+      |  by&nbsp;
+      span.loaner = loan.user.name
+    ul.tags
+      - loan.tags.each do |tag|
+        li
+          a href="http://www.kiva.org/lend?sortBy=newest&queryString=#{tag}" = tag

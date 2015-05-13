@@ -1,4 +1,4 @@
-#loans section.loan {
+section.loan {
   h1.title {
     font-size: 20px;
   }
@@ -11,6 +11,11 @@
 
   .info {
     width: 60%;
+
+    .loaner, .loan_amount {
+      font-weight: 700;
+    }
+
     .tags {
       li {
         @include pill($kiva_green);
