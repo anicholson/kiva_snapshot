@@ -1,0 +1,18 @@
+{
+  "12345": {
+    "data": {
+      "id": 12345
+    },
+    "balances": {
+
+    }
+  },
+  "34567": {
+    "data": {
+      "id": 34567
+    },
+    "balances": {
+      "amount_purchased_by_lender": 50
+    }
+  }
+}

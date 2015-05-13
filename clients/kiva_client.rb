@@ -20,8 +20,10 @@ class KivaClient
 
     loan_ids = parsed_response['loans'].map {|loan| loan['id'] }.join(',')
 
-    my_loans = http.get("/v1/loans/#{loan_ids}.json").body['loans']
+    loan_info     = http.get("/v1/loans/#{loan_ids}.json").body['loans']
+    loan_balances = http.get("/v1/my/loans/#{loan_ids}/balances.json").body['balances']
 
+    combined_loan_and_balance_info(loan_info, loan_balances)
   end
 
   def stats
@@ -38,6 +40,25 @@ class KivaClient
   private
 
   attr_reader :http
+
+  def combined_loan_and_balance_info(info, balances)
+    info_ids    = Set.new(info.map {|loan_info| loan_info['id']})
+    balance_ids = Set.new(info.map {|balance_info| balance_info['id']})
+
+    ids_with_full_data = info_ids.union(balance_ids)
+
+    answer = ids_with_full_data.inject({}) do |collection, id|
+      collection[id] = {
+        'data'     => with_id(info, id),
+        'balances' => with_id(balances, id)
+      }
+      collection
+    end
+  end
+
+  def with_id(collection, id)
+    collection.select {|item| item['id'] == id }.first
+  end
 
   def default_http_client
     Faraday.new(url: 'https://api.kivaws.org') do |faraday|

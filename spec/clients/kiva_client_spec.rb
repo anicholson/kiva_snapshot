@@ -4,7 +4,6 @@ require 'ostruct'
 
 describe KivaClient do
   let(:test_http_client) { double('HTTP client') }
-  let(:test_response) { OpenStruct.new( body: response_hash ) }
 
   before { allow(subject).to receive(:http).and_return(test_http_client) }
 
@@ -19,7 +18,7 @@ describe KivaClient do
       }
     end
 
-    before { allow(test_http_client).to receive(:get).with('/v1/my/balance.json').and_return(test_response) }
+    before { allow(test_http_client).to receive(:get).with('/v1/my/balance.json').and_return(test_response(response_hash)) }
 
     it 'COMMAND: should call out to the Kiva API' do
       expect(test_http_client).to receive(:get).with('/v1/my/balance.json')
@@ -72,7 +71,7 @@ describe KivaClient do
       }
     end
 
-    before { allow(test_http_client).to receive(:get).with('/v1/my/stats.json').and_return(test_response) }
+    before { allow(test_http_client).to receive(:get).with('/v1/my/stats.json').and_return(test_response(response_hash)) }
 
     it 'COMMAND: should call out to the Kiva API' do
       expect(test_http_client).to receive(:get).with('/v1/my/stats.json')
@@ -201,18 +200,63 @@ describe KivaClient do
       JSON
     end
 
+    let(:balance_response) {
+      JSON.parse <<-JSON
+      {
+        "balances": [
+          {
+            "id": 829958,
+          "total_amount_purchased": 175,
+          "amount_purchased_by_lender": 175,
+          "amount_repaid_to_lender": 0,
+          "currency_loss_to_lender": 0,
+          "amount_purchased_by_promo": 0,
+          "amount_repaid_to_promo": 0,
+          "currency_loss_to_promo": 0,
+          "arrears_amount": 0,
+          "status": "in_repayment",
+          "latest_share_purchase_time": 1424219408
+        },
+        {
+          "id": 857045,
+          "total_amount_purchased": 125,
+          "amount_purchased_by_lender": 125,
+          "amount_repaid_to_lender": 0,
+          "currency_loss_to_lender": 0,
+          "amount_purchased_by_promo": 0,
+          "amount_repaid_to_promo": 0,
+          "currency_loss_to_promo": 0,
+          "arrears_amount": 0,
+          "status": "in_repayment",
+          "latest_share_purchase_time": 1427266127
+        }
+        ]
+      }
+    JSON
+    }
+
+
     let(:loan_array) { OpenStruct.new(body: {'loans' => []})}
-    before { allow(test_http_client).to receive(:get).with('/v1/my/loans.json').and_return(test_response) }
+
+    before do
+      allow(test_http_client).to receive(:get).with('/v1/my/loans.json').and_return(test_response(response_hash))
+    end
 
     it 'COMMAND: should call out to the Kiva API' do
-      expect(test_http_client).to receive(:get).with('/v1/my/loans.json')
+      allow(test_http_client).to receive(:get).with('/v1/my/loans.json').and_return(test_response(response_hash))
       expect(test_http_client).to receive(:get).with('/v1/loans/857045,829958.json').and_return(loan_array)
+      expect(test_http_client).to receive(:get).with('/v1/my/loans/857045,829958/balances.json').and_return(loan_array)
       subject.loans
     end
 
-    it 'QUERY: should return an array of loans' do
-      allow(test_http_client).to receive(:get).with('/v1/loans/857045,829958.json').and_return(loan_array)
-      expect(subject.loans).to be_an(Array)
+    it 'QUERY: should return an hash of loans' do
+      allow(test_http_client).to receive(:get).with('/v1/loans/857045,829958.json').and_return(test_response(response_hash))
+      allow(test_http_client).to receive(:get).with('/v1/my/loans/857045,829958/balances.json').and_return(test_response(balance_response))
+
+      loans = subject.loans
+
+      expect(loans).to be_a(Hash)
+      expect(loans.count).to eq(2)
     end
 
   end

@@ -1,3 +1,5 @@
+require 'pry'
+
 class Loan < ActiveRecord::Base
   has_one :loan_user
   has_one :user, through: :loan_user
@@ -8,8 +10,9 @@ class Loan < ActiveRecord::Base
   class << self
     def new_from_json(json_data)
       new.tap do |loan|
-        loan.loan_id = json_data['id']
-        loan.data    = json_data
+        loan.loan_id  = json_data['data']['id']
+        loan.data     = json_data['data']
+        loan.balances = json_data['balances']
       end
     end
   end
@@ -30,5 +33,9 @@ class Loan < ActiveRecord::Base
 
   def tags
     data['tags'].map {|tag| tag['name'] }
+  end
+
+  def amount_we_loaned
+    BigDecimal.new(balances['amount_purchased_by_lender'])
   end
 end

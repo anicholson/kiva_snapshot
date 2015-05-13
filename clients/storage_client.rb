@@ -26,7 +26,7 @@ class StorageClient
   def loans(attributes)
     return false unless attributes
     Loan.destroy_all
-    attributes.each do |loan|
+    attributes.each do |_id, loan|
       Loan.new_from_json(loan).save!
     end
   end

@@ -27,7 +27,7 @@ describe StorageClient do
         describe ':loans' do
           subject { StorageClient.new.store(:loans, loan_data) }
           context 'passed loan data' do
-            let(:loan_data) { example_loans_data }
+            let(:loan_data) { example_combined_loan_data }
             it 'deletes all existing loans' do
               expect(Loan).to receive(:destroy_all)
 
