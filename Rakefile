@@ -34,6 +34,8 @@ namespace :scrape do
   end
 
   task :loans => :app do
+    puts "Fetching Loan information..."
+
     FetchesLoans.new(KivaClient.new, StorageClient.new).fetch
   end
 
