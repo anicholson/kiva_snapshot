@@ -12,7 +12,7 @@ body {
 }
 
 .centred-content {
-  @include outer-container(960px);
+  @include outer-container(1024px);
 }
 
 .full-width {
