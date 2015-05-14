@@ -12,17 +12,12 @@ html
     .centred-content
       h1 CCH Microfinance Team Dashboard
 
-      #panels
-        .row
-          == slim :available_balance
-          == slim :amount_lent
-          == slim :next_up, locals: { user: User.next_loaner }
+      ul.accordion-tabs
+        li.tab-header-and-content
+          a.is-active.tab-link href="javascript:void(0)"  Summary
+          .tab-content
+            == slim :'application/_summary'
 
-        .row
-          == slim :money_available
-
-        .row
-          == slim :last_3_loans
 
       footer
         a href='/api/query'

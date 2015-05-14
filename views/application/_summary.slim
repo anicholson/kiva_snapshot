@@ -1,0 +1,11 @@
+#panels
+  .row
+    == slim :'summary/available_balance'
+    == slim :'summary/amount_lent'
+    == slim :'summary/next_up', locals: { user: User.next_loaner }
+
+  .row
+    == slim :'summary/money_available'
+
+  .row
+    == slim :'summary/last_3_loans'
