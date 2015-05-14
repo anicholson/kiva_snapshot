@@ -20,7 +20,8 @@ kivaSnapshot.controller('MoneyAvailableController', function($scope, $http) {
       },
       colors: colors,
       chart: {
-        type: 'spline'
+        type: 'spline',
+        width: 900
       },
       title: {
         text: 'Money Available vs Loaned'
