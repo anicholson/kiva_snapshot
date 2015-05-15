@@ -9,3 +9,7 @@
 
   .row
     == slim :'summary/last_3_loans'
+
+javascript:
+  var summary = document.getElementById('panels');
+  angular.bootstrap(summary, ['kivaSnapshot']);

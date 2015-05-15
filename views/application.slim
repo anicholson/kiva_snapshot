@@ -7,8 +7,7 @@ html
     == stylesheet_tag 'application'
     == javascript_tag 'application'
 
-  body ng-app='kivaSnapshot'
-
+  body
     .centred-content
       h1 CCH Microfinance Team Dashboard
 
@@ -18,7 +17,11 @@ html
           .tab-content
             == slim :'application/_summary'
 
-
-      footer
-        a href='/api/query'
-          | API Querier
+        li.tab-header-and-content ng-app='querier'
+          a.tab-link href="javascript:void(0)" API Querier
+          .tab-content
+            == slim :query
+      /
+      /footer
+      /  a href='/api/query'
+      /    | API Querier
