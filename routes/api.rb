@@ -5,7 +5,7 @@ module Routing
         before do
           halt(404) unless logged_in?
         end
-        
+
         post '/query' do
           params = JSON.parse(request.body.read)
 
