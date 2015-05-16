@@ -35,5 +35,9 @@ describe Loan do
     it '#amount_we_loaned' do
       expect(subject.amount_we_loaned).to eq(BigDecimal.new('50'))
     end
+
+    it "#location" do
+      expect(subject.location).to be_a(Location)
+    end
   end
 end

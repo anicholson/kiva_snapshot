@@ -38,4 +38,8 @@ class Loan < ActiveRecord::Base
   def amount_we_loaned
     BigDecimal.new(balances['amount_purchased_by_lender'])
   end
+
+  def location
+    Location.new(data['location'])
+  end
 end
