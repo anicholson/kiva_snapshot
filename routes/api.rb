@@ -6,10 +6,6 @@ module Routing
           halt(404) unless logged_in?
         end
 
-        get '/query' do
-          slim :query
-        end
-
         post '/query' do
           params = JSON.parse(request.body.read)
 

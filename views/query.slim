@@ -1,28 +1,21 @@
-doctype html
+#api_query.centred-content ng-controller='KivaAPIController as qctl'
+  h1 CCH Microfinance Kiva API Query&hellip;er
 
-html
-  head
-    title = 'CCH Microfinance Kiva API Query'
+  #api_input
+    .full-width
+      label for='q'
+        | API Endpoint
+        input type='text' name='q' ng-model='query'
+        button ng-click='doQuery()' Go
 
-    == stylesheet_tag 'application'
-    == javascript_tag 'application'
+  #api_reference
+    a href='http://build.kiva.org/api' target='_blank'
+      | Kiva API reference
 
-  body ng-app='querier'
+  #results
+    .full-width
+      #result-content hljs='' source='results'
 
-    #api_query.centred-content ng-controller='KivaAPIController as qctl'
-      h1 CCH Microfinance Kiva API Query&hellip;er
-
-      #api_input
-        .full-width
-          label for='q'
-            | API Endpoint
-            input type='text' name='q' ng-model='query'
-            button ng-click='doQuery()' Go
-
-      #api_reference
-        a href='http://build.kiva.org/api' target='_blank'
-          | Kiva API reference
-
-      #results
-        .full-width
-          #result-content hljs='' source='results'
+javascript:
+  var querier = document.getElementById('api_query');
+  angular.bootstrap(querier, ['querier']);

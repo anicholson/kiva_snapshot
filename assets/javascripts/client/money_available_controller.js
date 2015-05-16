@@ -15,9 +15,13 @@ kivaSnapshot.controller('MoneyAvailableController', function($scope, $http) {
     $scope.dataSeries.loaned    = centsToDollars(data['loaned']);
 
     $scope.money_available_config = {
+      credits: {
+        enabled: false
+      },
       colors: colors,
       chart: {
-        type: 'spline'
+        type: 'spline',
+        width: 900
       },
       title: {
         text: 'Money Available vs Loaned'
