@@ -7,9 +7,11 @@
 //= require 'angular-resource'
 //= require 'highcharts-ng'
 //= require 'angular-highlightjs'
+//= require 'smallworld.js/dist/smallworld.js'
 
 // Application code
 
+//= require 'smallworld_data'
 //= require 'client'
 //= require './client/loans_controller'
 //= require './client/available_balance_controller'
