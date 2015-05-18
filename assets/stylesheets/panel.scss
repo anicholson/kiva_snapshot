@@ -34,13 +34,14 @@
 }
 
 #loans {
-  ul {
-    list-style-type: none;
-    display: inline-block;
-    li.loan {
-      display: inline;
-    };
-  };
+  hr.loan-divider {
+    width: 70%;
+    margin: 25px auto;
+    color: transparentize($kiva_green, 0.7);
+    border-style: solid;
+  }
+}
+
 }
 
 #next_up {

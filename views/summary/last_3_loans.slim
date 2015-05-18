@@ -1,6 +1,9 @@
 #loans
   h1 Last 3 Loans
 
-  - Loan.limit(3).each do |loan|
+  - Loan.limit(3).each_with_index do |loan, index|
     == slim :'loans/summary', locals: { loan: loan }
+
+    - if index < 2
+      hr.loan-divider
 

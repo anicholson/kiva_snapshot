@@ -3,25 +3,34 @@ section.loan {
     font-size: 20px;
   }
 
-    .status {
-      display: inline-block;
-      @include pill($kiva_green);
-    }
+  .status {
+    display: inline-block;
+    @include pill($kiva_green);
+  }
 
+  section {
+    position: relative;
 
-  .info {
-    width: 60%;
+    .textual-info {
+      width: 55%;
 
-    .loaner, .loan_amount {
-      font-weight: 700;
-    }
+      .loaner, .loan_amount {
+        font-weight: 700;
+      }
 
-    .tags {
-      li {
-        @include pill($kiva_green);
-        display: inline;
-        margin-right: 5px;
+      .tags {
+        li {
+          @include pill($kiva_green);
+          display: inline;
+          margin-right: 5px;
+        }
       }
     }
+    .visual-info {
+      float: right;
+      width: 40%;
+      height: 200px;
+    }
   }
+
 }
