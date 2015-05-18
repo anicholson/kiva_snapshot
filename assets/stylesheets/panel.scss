@@ -42,6 +42,8 @@
   }
 }
 
+#all_loans {
+  @extend %panel;
 }
 
 #next_up {

@@ -1,0 +1,3 @@
+section#all_loans
+  - Loan.all.each do |loan|
+    == slim :'loans/summary', locals: { loan: loan }

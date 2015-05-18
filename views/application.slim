@@ -17,6 +17,10 @@ html
           .tab-content
             == slim :'application/_summary'
 
+        li.tab-header-and-content
+          a.tab-link href="javascript:void(0)" Loans
+          .tab-content
+            == slim :'loans/index'
         li.tab-header-and-content ng-app='querier'
           a.tab-link href="javascript:void(0)" API Querier
           .tab-content
