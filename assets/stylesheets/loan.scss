@@ -29,7 +29,11 @@ section.loan {
     .visual-info {
       float: right;
       width: 40%;
-      height: 200px;
+
+      .map {
+        position: relative;
+        height: 200px;
+      }
     }
   }
 

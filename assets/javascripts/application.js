@@ -20,6 +20,29 @@
 
 //= require './client/querier'
 
+naughtyGlobalMaps = [];
+
+function collectionHas(haystack, needle) {
+    for(var i = 0, len = haystack.length; i < len; i ++) {
+      if(haystack[i] == needle) return true;
+    }
+    return false;
+}
+
+
+function findParentBySelector(elm, selector) {
+  var all = document.querySelectorAll(selector);
+  var current = elm.parentNode;
+  while(current&& !collectionHas(all, current)) {
+    current = current.parentNode;
+  }
+  return current;
+}
+
+
+/* FIXME: Don't want to rely on jQuery for this kind of stuff
+ *        Rewrite to use vanilla JS pls, Andy
+ */
 
 $(document).ready(function () {
   $('.accordion-tabs').each(function(index) {
@@ -38,4 +61,36 @@ $(document).ready(function () {
       event.preventDefault();
     }
   });
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', function(e) {
+  var extractCoordinatesFromLoan = function(loanEl) {
+    var coordinates = loanEl.getAttribute('data-map-location');
+    if(coordinates) {
+      var coordinatePairs = coordinates.split(', ');
+      return [parseFloat(coordinatePairs[0]), parseFloat(coordinatePairs[1])];
+    } else {
+      return [0,0];
+    }
+  }
+
+  var maps = document.querySelectorAll('.map');
+
+  for(var i = 0; i < maps.length; i++) {
+    var map  = maps[i],
+        loan = findParentBySelector(map, '.loan'),
+        coordinates;
+
+    if(loan) {
+      coordinates = extractCoordinatesFromLoan(loan);
+      var m = new Smallworld(map, {
+        center: [45, 0],
+        marker: coordinates
+      });
+      naughtyGlobalMaps.unshift(m);
+    }
+  }
 });
